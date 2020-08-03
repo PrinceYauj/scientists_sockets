@@ -1,0 +1,28 @@
+apt_packages:
+  - g++
+  - libpq-dev
+  - ruby2.6-dev
+  - zlib1g-dev
+  - libxml2-dev
+
+ruby_version: 2.6
+
+postgresql_version: 12
+
+postgresql_databases:
+  - name: mad_scientists
+    owner: mad_scientists
+  - name: testdb
+    owner: mad_scientists
+
+postgresql_users:
+  - name: mad_scientists
+    pass: 2
+
+postgresql_user_privileges:
+  - name: mad_scientists
+    db: mad_scientists
+    priv: "ALL"
+    role_attr_flags: "SUPERUSER"
+
+postgresql_default_auth_method: "trust"

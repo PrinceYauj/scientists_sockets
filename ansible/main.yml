@@ -1,0 +1,38 @@
+---
+- hosts: local
+  become: yes
+
+  pre_tasks:
+    - name: "Set environment variables"
+      lineinfile:
+        dest: "/home/vagrant/.bashrc"
+        regexp: "^export {{ item.var }}="
+        line: "export {{ item.var }}={{ item.value }}"
+      with_items:
+        - { var: "RACK_ENV", value: "development" }
+        - { var: "RAILS_ENV", value: "development" }
+        - { var: "PGUSER", value: "mad_scientists" }
+        - { var: "PGDATABASE", value: "mad_scientists" }
+        - { var: "HISTSIZE", value: "10000" }
+
+    - name: "Set psql configuration"
+      lineinfile:
+        create: yes
+        dest: "/home/vagrant/.psqlrc"
+        regexp: "^\\\\set {{ item.var }}"
+        line: "\\set {{ item.var }} {{ item.value }}"
+      with_items:
+        - { var: "HISTSIZE", value: "10000" }
+        - { var: "null", value: "'(null)'" }
+
+    - name: "Autofollow to project on logon"
+      lineinfile:
+        dest: "/home/vagrant/.bashrc"
+        regexp: "^cd /vagrant"
+        line: "cd /vagrant"
+
+  roles:
+    - role: ruby-brightbox
+    - role: apt
+    - role: ntp
+    - role: postgresql
