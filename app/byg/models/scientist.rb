@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sequel'
-
 module Byg
   module Models
     # scientist model. Has many inventions
