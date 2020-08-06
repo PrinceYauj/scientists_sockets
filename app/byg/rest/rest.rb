@@ -1,2 +1,2 @@
-require_relative 'scientists/scientists.rb'
-require_relative 'inventions/inventions.rb'
+require_relative 'scientists/scientists'
+require_relative 'inventions/inventions'

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require 'sequel'
-
 module Byg
   module Models
     # Invention model. Belongs to the scientist

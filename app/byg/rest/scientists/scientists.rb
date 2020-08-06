@@ -1,8 +1,8 @@
-require_relative '/vagrant/app/byg/actions/scientists/index.rb'
-require_relative '/vagrant/app/byg/actions/scientists/show.rb'
-require_relative '/vagrant/app/byg/actions/scientists/create.rb'
-require_relative '/vagrant/app/byg/actions/scientists/destroy.rb'
-require_relative '/vagrant/app/byg/actions/scientists/update.rb'
+require_relative '/vagrant/app/byg/actions/scientists/index'
+require_relative '/vagrant/app/byg/actions/scientists/show'
+require_relative '/vagrant/app/byg/actions/scientists/create'
+require_relative '/vagrant/app/byg/actions/scientists/destroy'
+require_relative '/vagrant/app/byg/actions/scientists/update'
 
 module Byg
   module Rest

@@ -1,8 +1,8 @@
-require_relative '/vagrant/app/byg/actions/inventions/index.rb'
-require_relative '/vagrant/app/byg/actions/inventions/show.rb'
-require_relative '/vagrant/app/byg/actions/inventions/create.rb'
-require_relative '/vagrant/app/byg/actions/inventions/destroy.rb'
-require_relative '/vagrant/app/byg/actions/inventions/update.rb'
+require_relative '/vagrant/app/byg/actions/inventions/index'
+require_relative '/vagrant/app/byg/actions/inventions/show'
+require_relative '/vagrant/app/byg/actions/inventions/create'
+require_relative '/vagrant/app/byg/actions/inventions/destroy'
+require_relative '/vagrant/app/byg/actions/inventions/update'
 
 module Byg
   module Rest
