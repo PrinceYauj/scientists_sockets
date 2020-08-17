@@ -1,5 +1,6 @@
 .irb_history
 .vagrant
 ansible/roles
+test/
 doc
 tmp
