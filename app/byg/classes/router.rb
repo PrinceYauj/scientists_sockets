@@ -1,7 +1,7 @@
 module Byg
   module Classes
     class Router
-      VALID_PATH = /\A\/+(scientists|inventions)(\/+\d+\s*)?\z/
+      VALID_PATH = /\A\/+(scientists|inventions)(\/+-?\d+\s*)?\z/
       VALID_VERB = /\A\s*(GET|POST|PUT|DELETE)\s*/i
       ROUTE_MAP = {
         'get'    => 'show',

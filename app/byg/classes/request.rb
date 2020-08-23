@@ -9,12 +9,12 @@ module Byg
       end
 
       def parse
-        env = {}
-        env["REQUEST_METHOD"] = verb
-        env["PATH_INFO"] = path
-        env["BODY"] = body
-        env["HEADERS"] = headers
-        env
+        result = {}
+        result["REQUEST_METHOD"] = verb
+        result["PATH_INFO"] = path
+        result["BODY"] = body
+        result["HEADERS"] = headers
+        result
       end
 
       private

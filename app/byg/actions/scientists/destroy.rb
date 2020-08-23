@@ -7,7 +7,7 @@ module Byg
       # returns deleted scientist or nil
       class Destroy
         def destroy(params)
-          Models::Scientist[params[:route_id]]&.destroy
+          Models::Scientist[params['route_id']]&.destroy
         end
       end
     end

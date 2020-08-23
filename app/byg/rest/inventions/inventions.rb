@@ -9,7 +9,7 @@ module Byg
     # provides functions to inventions actions
     module Inventions
       def self.show(params)
-        Actions::Inventions::Show.new.show(params) if params['id']
+        return Actions::Inventions::Show.new.show(params) if params['route_id']
         Actions::Inventions::Index.new.index
       end
 

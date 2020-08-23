@@ -7,7 +7,7 @@ module Byg
       # returns invention or nil
       class Show
         def show(params)
-          Models::Invention[params[:route_id]]
+          Models::Invention[params['route_id']]
         end
       end
     end

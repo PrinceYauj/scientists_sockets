@@ -16,7 +16,7 @@ module Byg
 
       def validate
         super
-        validates_presence %i[name scientist_id]
+        validates_presence :scientist_id
         validates_type String, :name
         validates_max_length 255, :name
         validates_operator(:>, 0, :power)

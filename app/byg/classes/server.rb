@@ -12,8 +12,8 @@ module Byg
 
       def start(client)
         data = client.recv(BUFF_SIZE)
-        handle_data(data)
-        # TODO form a response
+        response = handle_data(data)
+        client.send(response, 0)
         client.close
       end
 
@@ -25,11 +25,13 @@ module Byg
         end
       end
 
-      def handle_data(data)
-        env = Request.new(data).parse
-        Controller.new.call(env)
-      end
+      private
 
+      def handle_data(data)
+        request = Request.new(data).parse
+        response = Controller.new.call(request)
+        Response.new(response).generate
+      end
     end
   end
 end

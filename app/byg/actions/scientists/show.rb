@@ -7,7 +7,7 @@ module Byg
       # returns scientist or nil
       class Show
         def show(params)
-          Models::Scientist[params[:route_id]]
+          Models::Scientist[params['route_id']]
         end
       end
     end
