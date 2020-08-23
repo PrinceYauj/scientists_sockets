@@ -8,17 +8,17 @@ RSpec.describe Byg::Rest::Scientists do
   context 'GET /scientists' do
     let(:req) { 'GET /scientists' }
 
-    it 'invokes Request\'s instance_method #parse' do
-      r = double('Request')
-      allow(Byg::Classes::Request).to receive(:new).and_return(r)
-      c = double('Controller').as_null_object
-      allow(Byg::Classes::Controller).to receive(:new).and_return(c)
-      expect(r).to receive(:parse)
+    it 'invokes Router\'s instance_method #action' do
+      r = double('Router').as_null_object
+      allow(Byg::Classes::Router).to receive(:new).
+        and_return(r)
+      expect(r).to receive(:action)
+      expect(r).to receive(:id)
       act
     end
 
-    it 'invokes Byg::Rest::Scientists.show method' do
-      expect(Byg::Rest::Scientists).to receive(:show)
+    it 'invokes described_class.show method' do
+      expect(described_class).to receive(:show)
       act
     end
   end
@@ -26,8 +26,8 @@ RSpec.describe Byg::Rest::Scientists do
   context 'POST /scientists' do
     let(:req) { 'POST /scientists' }
 
-    it 'invokes Byg::Rest::Scientists.create method' do
-      expect(Byg::Rest::Scientists).to receive(:create)
+    it 'invokes described_class.create method' do
+      expect(described_class).to receive(:create)
       act
     end
   end
@@ -35,8 +35,8 @@ RSpec.describe Byg::Rest::Scientists do
   context 'PUT /scientists' do
     let(:req) { 'PUT /scientists' }
 
-    it 'invokes Byg::Rest::Scientists.update method' do
-      expect(Byg::Rest::Scientists).to receive(:update)
+    it 'invokes described_class.update method' do
+      expect(described_class).to receive(:update)
       act
     end
   end
@@ -44,8 +44,8 @@ RSpec.describe Byg::Rest::Scientists do
   context 'DELETE /scientists' do
     let(:req) { 'DELETE /scientists' }
 
-    it 'invokes Byg::Rest::Scientists.destroy method' do
-      expect(Byg::Rest::Scientists).to receive(:destroy)
+    it 'invokes described_class.destroy method' do
+      expect(described_class).to receive(:destroy)
       act
     end
   end
