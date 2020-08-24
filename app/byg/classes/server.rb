@@ -10,17 +10,17 @@ module Byg
         @listener = TCPServer.new(host, port)
       end
 
-      def start(client)
-        data = client.recv(BUFF_SIZE)
+      def start(serv_sock)
+        data = serv_sock.recv(BUFF_SIZE)
         response = handle_data(data)
-        client.send(response, 0)
-        client.close
+        serv_sock.send(response, 0)
+        serv_sock.close
       end
 
       def run
         loop do
-          Thread.start(listener.accept) do |client|
-            start(client)
+          Thread.start(listener.accept) do |serv_sock|
+            start(serv_sock)
           end
         end
       end

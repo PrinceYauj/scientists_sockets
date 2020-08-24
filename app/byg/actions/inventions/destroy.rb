@@ -8,7 +8,7 @@ module Byg
       # returns inventions or nil
       class Destroy
         def destroy(params)
-          Models::Invention[params['route_id']]&.destroy
+          Models::Invention[params[:route_id]]&.destroy
         end
       end
     end

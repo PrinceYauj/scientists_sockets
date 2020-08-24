@@ -16,18 +16,18 @@ module Byg
       private
 
       def handle_route(request)
-        r = Router.new(request["REQUEST_METHOD"], request["PATH_INFO"])
+        r = Router.new(request[:verb], request[:path])
         return unless r.valid?
 
         action = r.action
         id = r.id
-        p = params(request['BODY'], id)
+        p = params(request[:body], id)
         action.call(p)
       end
 
       def params(body, id)
         res = json_parse(body) || {}
-        res['route_id'] = id if id
+        res[:route_id] = id if id
         res
       end
 

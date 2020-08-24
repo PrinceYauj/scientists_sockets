@@ -9,7 +9,7 @@ module Byg
     # provides functions to scientists actions
     module Scientists
       def self.show(params)
-        return Actions::Scientists::Show.new.show(params) if params['route_id']
+        return Actions::Scientists::Show.new.show(params) if params[:route_id]
         Actions::Scientists::Index.new.index
       end
 

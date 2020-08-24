@@ -10,9 +10,9 @@ module Byg
       # created_at CAN NOT be updated
       class Update
         def initialize(params)
-          params.delete('created_at')
-          @route_id = params.delete('route_id')
-          @id = params.delete('id')
+          params.delete(:created_at)
+          @route_id = params.delete(:route_id)
+          @id = params.delete(:id)
           @params = params
         end
 
@@ -31,7 +31,7 @@ module Byg
         attr_reader :route_id, :id, :params
 
         # @return [Models::Invention]
-        #   the invention found by `route_id`
+        #  the invention found by `route_id`
         def record
           Models::Invention.with_pk!(route_id)
         end

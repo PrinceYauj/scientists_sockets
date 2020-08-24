@@ -10,10 +10,10 @@ module Byg
 
       def parse
         result = {}
-        result["REQUEST_METHOD"] = verb
-        result["PATH_INFO"] = path
-        result["BODY"] = body
-        result["HEADERS"] = headers
+        result[:verb] = verb
+        result[:path] = path
+        result[:body] = body
+        result[:headers] = headers
         result
       end
 
