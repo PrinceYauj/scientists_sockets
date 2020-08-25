@@ -4,30 +4,30 @@ module Byg
 
       BAD_REQUEST = [400, ["bad request"]]
 
-      def call(request)
-        response = handle_route(request)
+      def call(env)
+        response = handle_route(env)
         return BAD_REQUEST unless response
 
         [200, response]
-      rescue Sequel::Error => e
+      rescue StandardError => e
         [400, e]
       end
 
       private
 
-      def handle_route(request)
-        r = Router.new(request[:verb], request[:path])
+      def handle_route(env)
+        r = Router.new(env[:verb], env[:path])
         return unless r.valid?
 
         action = r.action
-        id = r.id
-        p = params(request[:body], id)
+        route_id = r.id
+        p = params(env[:body], route_id)
         action.call(p)
       end
 
-      def params(body, id)
+      def params(body,route_id)
         res = json_parse(body) || {}
-        res[:route_id] = id if id
+        res[:route_id] = route_id if route_id
         res
       end
 

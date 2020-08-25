@@ -11,8 +11,8 @@ module Byg
       end
 
       def start(serv_sock)
-        data = serv_sock.recv(BUFF_SIZE)
-        response = handle_data(data)
+        request = serv_sock.recv(BUFF_SIZE)
+        response = handle_data(request)
         serv_sock.send(response, 0)
         serv_sock.close
       end
@@ -27,9 +27,9 @@ module Byg
 
       private
 
-      def handle_data(data)
-        request = Request.new(data).parse
-        response = Controller.new.call(request)
+      def handle_data(request)
+        env = Request.new(request).parse
+        response = Controller.new.call(env)
         Response.new(response).generate
       end
     end
