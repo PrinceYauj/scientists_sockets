@@ -13,20 +13,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.before do
-    host = '127.0.0.1'
-    port = 4000
-    @server = Byg::Classes::Server.new(host, port)
-    @client = TCPSocket.new(host, port)
-    @serv_sock = @server.listener.accept
-  end
-
-  config.after do
-    @client.close
-    @serv_sock.close
-    @server.listener.close
-  end
-
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
 #  config.filter_run_when_matching :focus
