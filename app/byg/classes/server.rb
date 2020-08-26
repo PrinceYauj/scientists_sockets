@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 module Byg
   module Classes
+    # Simple http-server. Uses socket connections and transmission of data
+    # Receives and handles requests, returns requested data (or 'bad request')
     class Server
-
       BUFF_SIZE = 4096
 
       attr_reader :listener

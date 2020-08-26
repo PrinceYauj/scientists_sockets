@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 module Byg
   module Classes
+    # Support class to parse http-request
+    # Returns a hash, similar to Rack's env variable
     class Request
-
       def initialize(str)
         @head, @body = str.split("\r\n\r\n")
         @start_line, *@headers = @head.split("\r\n")
@@ -23,8 +26,8 @@ module Byg
 
       def headers
         res = {}
-        @headers.each do |s| 
-          k, v = s.split(": ", 2)
+        @headers.each do |s|
+          k, v = s.split(': ', 2)
           res[k] = v
         end
         res

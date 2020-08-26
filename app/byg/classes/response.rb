@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Byg
   module Classes
+    # Support class to generate http-response from requested data
     class Response
       def initialize(array)
         @status = array[0]
@@ -7,7 +10,7 @@ module Byg
       end
 
       def generate
-        status_text = {'200' => 'OK', '400' => 'bad request'}
+        status_text = { '200' => 'OK', '400' => 'bad request' }
         [
           "HTTP/1.1 #{status} #{status_text[status.to_s]}\r\n",
           "Content-Type: text/plain\r\n",

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '/vagrant/app/byg/actions/scientists/index'
 require_relative '/vagrant/app/byg/actions/scientists/show'
 require_relative '/vagrant/app/byg/actions/scientists/create'
@@ -10,6 +12,7 @@ module Byg
     module Scientists
       def self.show(params)
         return Actions::Scientists::Show.new.show(params) if params[:route_id]
+
         Actions::Scientists::Index.new.index
       end
 

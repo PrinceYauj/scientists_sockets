@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 module Byg
   module Classes
+    # Calls business logic's method to request data from DB
+    # Returns a pair - http response status and requested data (or bad request)
     class Controller
-
-      BAD_REQUEST = [400, ["bad request"]]
+      BAD_REQUEST = [400, ['bad request']].freeze
 
       def call(env)
         response = handle_route(env)
@@ -25,14 +28,16 @@ module Byg
         action.call(p)
       end
 
-      def params(body,route_id)
+      def params(body, route_id)
         res = json_parse(body) || {}
         res[:route_id] = route_id if route_id
         res
       end
 
       def json_parse(string)
-        JSON.parse(string) rescue nil
+        JSON.parse(string, symbolize_names: true)
+      rescue StandardError
+        nil
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Byg::Classes::Server do
   subject(:server) { described_class.new('127.0.0.1', 4000) }
 
@@ -11,13 +13,13 @@ RSpec.describe Byg::Classes::Server do
     allow(d).to receive(method.to_sym).and_return result
   end
 
-  context 'random request' do
+  context 'with random request' do
     let(:request) { 'random request' }
 
     it { expect(server.send(:handle_data, request)).to include('bad request') }
   end
 
-  context 'GET /scientists' do
+  context 'with GET /scientists' do
     let(:request) { 'GET /scientists' }
 
     it 'returns http status 200 OK' do
@@ -26,7 +28,7 @@ RSpec.describe Byg::Classes::Server do
     end
   end
 
-  context 'GET /inventions/1' do
+  context 'with GET /inventions/1' do
     let(:request) { 'GET /inventions/1' }
 
     it 'returns http status 200 OK' do

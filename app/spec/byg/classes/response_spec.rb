@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Byg::Classes::Response do
   subject(:response) { described_class.new(res) }
 

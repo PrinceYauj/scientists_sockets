@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '/vagrant/app/byg/actions/inventions/index'
 require_relative '/vagrant/app/byg/actions/inventions/show'
 require_relative '/vagrant/app/byg/actions/inventions/create'
@@ -10,6 +12,7 @@ module Byg
     module Inventions
       def self.show(params)
         return Actions::Inventions::Show.new.show(params) if params[:route_id]
+
         Actions::Inventions::Index.new.index
       end
 

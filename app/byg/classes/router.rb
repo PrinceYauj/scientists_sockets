@@ -1,20 +1,25 @@
+# frozen_string_literal: true
+
 module Byg
   module Classes
+    # Validates parsed http request
+    # Routes parsed http request to corresponding action in a business logic
+    # Returns action's method name
     class Router
-      VALID_PATH = /\A\/+(scientists|inventions)(\/+-?\d+\s*)?\z/
-      VALID_VERB = /\A\s*(GET|POST|PUT|DELETE)\s*/i
+      VALID_PATH = %r{\A/+(scientists|inventions)(/+-?\d+\s*)?\z}.freeze
+      VALID_VERB = /\A\s*(GET|POST|PUT|DELETE)\s*/i.freeze
       ROUTE_MAP = {
-        'get'    => 'show',
-        'post'   => 'create',
-        'put'    => 'update',
+        'get' => 'show',
+        'post' => 'create',
+        'put' => 'update',
         'delete' => 'destroy'
-      }
+      }.freeze
       DELIM = '/'
 
       def initialize(verb, path)
         @verb = verb.downcase
         @path = path
-        @path_spl = path.gsub(/\/+/, '/').sub('/', '').split(DELIM, 3)
+        @path_spl = path.gsub(%r{/+}, '/').sub('/', '').split(DELIM, 3)
       end
 
       def valid?
